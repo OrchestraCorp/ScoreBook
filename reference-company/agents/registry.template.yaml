@@ -1,0 +1,6 @@
+# OrchestraCorp Agent 注册表模板
+# 合法 YAML；具体身份、凭据状态和运行实例由 Stage 管理。
+
+version: 1
+status: template
+agents: []

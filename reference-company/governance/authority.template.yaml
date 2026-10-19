@@ -1,0 +1,32 @@
+# OrchestraCorp 授权矩阵模板
+# 这是企业实例的配置起点，不含真实人员、角色或凭据。
+
+version: 1
+status: template
+policy_effect: none
+
+principals:
+  - human
+  - agent
+  - service
+
+actions:
+  - read
+  - propose
+  - write
+  - submit
+  - approve
+  - execute
+  - publish
+  - revoke
+
+scopes:
+  - organization
+  - department
+  - team
+  - project
+  - task
+  - resource
+  - document
+
+rules: []
