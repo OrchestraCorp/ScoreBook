@@ -8,7 +8,7 @@ ScoreBook 是 OrchestraCorp 的 **Mind Repo**，用乐谱指代组织运行所�
 
 [仓库初始化、授权与持续演进设计](docs/repository-lifecycle-design.md)记录下一阶段能力：以企业自托管 GitLab 为首版，生成公司共享仓和按读者分离的部门/受限仓，支持权限核验、Git 协作、模板升级与知识演进。该方向已于 2026-10-19 确认；具体接口与实施细节继续细化，相关工具尚未实现。
 
-当前产品模板目录已初始化为独立本地 Git 仓库，主分支为 `main`。企业 GitLab `origin` 待项目组统一建立后配置；`reference-company/` 作为模板内容由本仓库管理，企业实例另行建仓。
+当前产品模板由独立 Git 仓库管理，主分支为 `main`，`origin` 指向 GitHub 私有仓库 `OrchestraCorp/ScoreBook`；`reference-company/` 作为模板内容由本仓库管理，企业实例仍按 GitLab 多仓方案另行建仓。
 
 ## 产品仓与企业入口
 
