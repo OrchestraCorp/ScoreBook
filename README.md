@@ -8,7 +8,9 @@ ScoreBook 是 OrchestraCorp 的 **Mind Repo**，用乐谱指代组织运行所�
 
 [仓库初始化、授权与持续演进设计](docs/repository-lifecycle-design.md)记录下一阶段能力：以企业自托管 GitLab 为首版，生成公司共享仓和按读者分离的部门/受限仓，支持权限核验、Git 协作、模板升级与知识演进。该方向已于 2026-10-19 确认；具体接口与实施细节继续细化，相关工具尚未实现。
 
-当前产品模板由独立 Git 仓库管理，主分支为 `main`，`origin` 指向 GitHub 私有仓库 `OrchestraCorp/ScoreBook`；`reference-company/` 作为模板内容由本仓库管理，企业实例仍按 GitLab 多仓方案另行建仓。
+产品模板以 [MIT 许可证](LICENSE)开源，主分支为 `main`，仓库位于 [OrchestraCorp/ScoreBook](https://github.com/OrchestraCorp/ScoreBook)。`reference-company/` 作为模板内容由本仓库管理，企业实例仍按 GitLab 多仓方案另行建仓。
+
+MIT 允许商业使用、修改和再分发，复制本模板或其实质部分时须保留版权声明及许可声明。企业实例及其定制内容可以保持私有，无须因为采用模板而公开企业资料。`reference-company/` 包含独立的 [LICENSE](reference-company/LICENSE)，完整复制时应一并保留；外部参考材料仍遵守各自注明的许可证。
 
 ## 产品仓与企业入口
 
@@ -17,12 +19,14 @@ ScoreBook/                   产品模板仓
 ├── AGENT.md                 模板维护指令
 ├── AGENTS.md                模板维护兼容入口
 ├── README.md
+├── LICENSE                  MIT 许可证
 ├── architecture.md
 ├── docs/                    初始化、授权与演进设计
 ├── examples/                外部知识和模板参考
 └── reference-company/       可独立复制的公司 Repo 骨架
     ├── AGENT.md             公司 Maestro 入口
     ├── AGENTS.md
+    ├── LICENSE              独立复制时保留的 MIT 许可证
     ├── operating-handbook/
     ├── governance/
     ├── organization/
