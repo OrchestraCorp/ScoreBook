@@ -1,0 +1,5 @@
+# ScoreBook brand assets
+
+[scorebook.svg](scorebook.svg) is the original artwork supplied by the project owner. Keep its geometry, colors and aspect ratio unchanged.
+
+[scorebook.png](scorebook.png) is a 512 × 512 raster export on a white background for README display in light and dark themes. The SVG source is retained without modification.

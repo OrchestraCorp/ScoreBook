@@ -1,71 +1,93 @@
+<p align="center">
+  <img src="assets/brand/scorebook.png" width="144" height="144" alt="ScoreBook logo">
+</p>
+
 # ScoreBook
 
-ScoreBook 是 OrchestraCorp 的 **Mind Repo**，用乐谱指代组织运行所依赖的规则、知识和正式产物。
+**用版本化的组织手册、岗位契约与正式知识，为企业协作写好乐谱。**
 
-[架构设计](architecture.md)说明[当前目录树与功能设计](architecture.md#三当前目录树与功能设计)、模板与企业实例、权威范围、权限分仓，以及 Maestro 和 Stage 的协作方式。
+ScoreBook 是 OrchestraCorp 的组织知识与治理模板仓（Mind Repo）。它提供一套可阅读、审阅和修改的参考公司骨架，帮助企业把工作规则、责任边界、知识和决策保存在可追溯的 Git 历史中。
 
-[参考公司手册](reference-company/operating-handbook/README.md)提供完整参考组织的手册入口；[参考公司骨架](reference-company/)包含默认部门、岗位和跨部门协作入口。
+本项目采用 [MIT 许可证](LICENSE)，允许商业使用、修改和再分发。企业可以基于模板维护自己的私有知识仓库。
 
-[仓库初始化、授权与持续演进设计](docs/repository-lifecycle-design.md)记录下一阶段能力：以企业自托管 GitLab 为首版，生成公司共享仓和按读者分离的部门/受限仓，支持权限核验、Git 协作、模板升级与知识演进。该方向已于 2026-10-19 确认；具体接口与实施细节继续细化，相关工具尚未实现。
+[参考公司手册](reference-company/operating-handbook/README.md) · [开始采用](#开始采用) · [架构设计](architecture.md) · [后续建设](docs/repository-lifecycle-design.md)
 
-产品模板以 [MIT 许可证](LICENSE)开源，主分支为 `main`，仓库位于 [OrchestraCorp/ScoreBook](https://github.com/OrchestraCorp/ScoreBook)。`reference-company/` 作为模板内容由本仓库管理，企业实例仍按 GitLab 多仓方案另行建仓。
+## OrchestraCorp 四个模块
 
-MIT 允许商业使用、修改和再分发，复制本模板或其实质部分时须保留版权声明及许可声明。企业实例及其定制内容可以保持私有，无须因为采用模板而公开企业资料。`reference-company/` 包含独立的 [LICENSE](reference-company/LICENSE)，完整复制时应一并保留；外部参考材料仍遵守各自注明的许可证。
+| 项目 | 分工 |
+| --- | --- |
+| **[ScoreBook](https://github.com/OrchestraCorp/ScoreBook)** | 组织手册、岗位契约、正式知识与决定的版本依据。 |
+| [Stage](https://github.com/OrchestraCorp/Stage) | 企业后端，负责身份、任职、权限与受控业务操作。 |
+| [Maestro](https://github.com/OrchestraCorp/Maestro) | 组织协作与管理入口，支持人员监督下的理解、整理、提案和协调。 |
+| [Virtuoso](https://github.com/OrchestraCorp/Virtuoso) | 面向员工的工作入口，支持人员与 Agent 完成具体工作。 |
 
-## 产品仓与企业入口
+这些分工描述产品方向；ScoreBook 与 Stage 的自动发布、加载和回执链路尚未实现。当前可以直接采用的是文档与 YAML 模板，无需启动应用服务。
+
+## 当前包含什么
+
+| 内容 | 入口与状态 |
+| --- | --- |
+| 11 章组织操作手册 | [参考正文](reference-company/operating-handbook/README.md)，覆盖组织、工作、知识、决策、人员、客户、资产与风险等主题；当前为参考初稿。 |
+| 10 个部门骨架 | [部门目录](reference-company/departments/)，包含职责、岗位、协作接口和知识入口。 |
+| 3 份岗位契约 | [岗位契约](reference-company/organization/role-contracts/)，明确跨部门任务、知识维护和内部服务责任。 |
+| 6 份记录模板 | [模板目录](reference-company/knowledge/templates/)，覆盖工作上下文、协作请求、交接、验收证据、知识和决定。 |
+| 4 份虚构样例 | [样例目录](reference-company/knowledge/samples/)，演示协作、交付、交接和知识整理。 |
+| 治理与版本管理骨架 | [治理](reference-company/governance/)、[组织](reference-company/organization/)、[决定](reference-company/decisions/)与[归档](reference-company/archives/)。 |
+
+内容仍需一致性审阅和企业适用性确认。参考章节和样例不自动成为任何企业的生效制度。Schema 校验、自动实例化、模板升级工具及 Stage 同步程序仍待建设。
+
+## 开始采用
+
+1. **阅读并选择基线。** 从[参考公司入口](reference-company/README.md)和[组织操作手册](reference-company/operating-handbook/README.md)开始，记录所用的 ScoreBook Git 提交，确定需要调整的组织规则与岗位责任。
+2. **建立自己的私有仓库。** 将 `reference-company/` 内的完整内容复制到新的私有试用仓，保留内部路径、`LICENSE`、`AGENT.md` 和 `AGENTS.md`。复制后的根 `AGENT.md` 是企业实例的 Maestro 入口；外层产品仓和 `examples/` 不属于企业运行必需内容。
+3. **明确责任和权限后再采用。** 指定内容责任人、审阅人和信息分类，按实际读者设置仓库权限，再填入企业资料。通过审阅明确采用哪些规则及其生效方式；涉及运行配置时，另行核验 Stage 的接入和实际加载结果。
+
+有不同读者范围的内容应拆到不同受限仓库。目录名称和分类标签不能代替权限：在全员可读的仓库里建立 `locked/` 目录，并不能保护其中的资料。
+
+拟建初始化工具将优先支持企业自托管 GitLab，按权限生成公司共享、部门和受限仓库，并支持授权核验、升级和知识演进。具体合同与实施进度见[仓库生命周期设计](docs/repository-lifecycle-design.md)。
+
+## 目录与权威边界
 
 ```text
-ScoreBook/                   产品模板仓
-├── AGENT.md                 模板维护指令
-├── AGENTS.md                模板维护兼容入口
+ScoreBook/                   开源产品模板仓
 ├── README.md
 ├── LICENSE                  MIT 许可证
-├── architecture.md
-├── docs/                    初始化、授权与演进设计
-├── examples/                外部知识和模板参考
-└── reference-company/       可独立复制的公司 Repo 骨架
-    ├── AGENT.md             公司 Maestro 入口
-    ├── AGENTS.md
-    ├── LICENSE              独立复制时保留的 MIT 许可证
-    ├── operating-handbook/
-    ├── governance/
-    ├── organization/
-    ├── agents/
-    ├── knowledge/
-    ├── decisions/
-    ├── repositories/
-    ├── archives/
-    ├── departments/
-    └── cross-functional/
+├── AGENT.md / AGENTS.md     模板维护指令
+├── architecture.md          内容结构与职责设计
+├── assets/brand/            产品 Logo
+├── docs/                    仓库初始化、授权与演进设计
+├── examples/                外部参考入口与来源记录格式
+└── reference-company/       可独立复制的参考公司骨架
+    ├── AGENT.md / AGENTS.md 企业实例入口
+    ├── LICENSE              独立复制时保留
+    ├── operating-handbook/  组织操作手册
+    ├── governance/          治理、授权与信息分类模板
+    ├── organization/        组织模型、岗位与决策权
+    ├── departments/         部门职责与接口
+    ├── cross-functional/    跨部门协作方法
+    ├── knowledge/           正式知识、记录模板与样例
+    ├── agents/              Agent 能力与注册模板
+    ├── decisions/           正式决定
+    ├── repositories/        系统与仓库索引
+    └── archives/            历史归档索引
 ```
 
-企业取 `reference-company/` 内的完整内容建立自己的私有 Repo，以其中的 `AGENT.md` 为 Maestro 入口。产品仓根目录只用于维护模板，不作为企业运行上下文，也不随企业实例运行持续读取。
+ScoreBook 保存长期、可审阅的规则与知识版本。Stage 的实时任务、任职、权限和运行状态由 Stage 管理；员工私人会话、凭据以及未经授权的业务原文不应进入公开产品模板。
 
-上述复制方式适用于当前内容采用。拟建初始化工具会按企业蓝图将同一内容源生成到多个独立仓库，并重写入口和引用；不会把所有部门原文先放进共享仓，再把搬目录视为权限隔离。
+人员与 Maestro 可以按授权整理内容、准备变更和审阅提案。提交、批准、合并和运行生效分别核验；Git 合并不代表 Stage 已加载，也不授予 Agent 额外执行权限。
 
-## 默认组织操作手册
+## 文档与贡献
 
-ScoreBook 将提供一套有明确默认选择、可以直接审阅和采用的参考组织手册，企业从完整基线开始调整。它不只是一组空白表格，也不绑定某批人员或固定部门。
+- [架构设计](architecture.md)：目录功能、内容权威、权限分仓与后续缺口。
+- [仓库生命周期设计](docs/repository-lifecycle-design.md)：企业初始化、Git 协作、模板升级与知识演进方向。
+- [手册编写纲要](reference-company/operating-handbook/writing-plan.md)：参考手册的范围和编写要求。
+- [模板维护指令](AGENT.md)：来源、责任、分类、版本和审阅约束。
+- [外部参考说明](examples/README.md)：来源和许可的记录要求。
 
-截至 2026-10-19，已保存[编写纲要](reference-company/operating-handbook/writing-plan.md)和 [11 章参考初稿](reference-company/operating-handbook/README.md)，并建立 10 个部门骨架、3 份岗位契约、6 份记录模板及 4 份虚构样例。内容仍需一致性审阅和企业适用性确认；章节主张和示例不自动成为任何企业的生效制度。
+欢迎通过 [Issues](https://github.com/OrchestraCorp/ScoreBook/issues) 或 Pull Request 改进模板、修正文档和补充可复用的虚构样例。贡献企业经验前请去除真实人员、客户、凭据及受限资料，并确认所提供内容的授权和来源。
 
-当前仓库内容是文档与 YAML 模板，尚无 schema 校验、自动实例化、发布或 Stage 同步程序。各目录已有内容、功能边界与待决问题见[架构设计](architecture.md)。
+## 许可证
 
-## 公司 Repo 保存什么
+ScoreBook 产品模板采用 [MIT](LICENSE)。复制本模板或其实质部分时须保留版权及许可声明；完整复制参考公司时，应一并保留其 [LICENSE](reference-company/LICENSE)。
 
-- 治理原则、权限与信息分类规则。
-- 岗位契约、Agent 能力定义和协议 schema。
-- 经确认的知识、SOP、Skill、案例和模板。
-- 正式决策、变更历史和归档索引。
-- 真实代码仓、连接器和交付物索引。
-
-## 不作为公司 Repo 的实时事实源
-
-- Stage 的高频任务、认领、运行队列和实时状态。
-- Virtuoso 的私人会话或不可交接的个人记忆。
-- 未经授权的个人信息、凭据、合同金额和财务原文。
-- 具体公司的真实人员和业务记录，除非在实例化后的受限仓中维护。
-
-ScoreBook 是长期事实与版本依据；它不是实时队列，也不自动决定制度何时生效。规则生效由 Stage 读取指定版本并记录。
-
-根目录是产品模板和参考资料；真正给企业使用的 ScoreBook 应从 `reference-company/` 实例化，并按企业权限拆分仓库。不应把受限内容仅放进一个所有人可读取仓库中的 `locked/` 目录。
+企业实例及其定制内容可以保持私有，采用模板不要求公开企业制度或业务资料。企业新增内容的权利由其权利人决定；外部参考材料仍遵守各自注明的许可证。
